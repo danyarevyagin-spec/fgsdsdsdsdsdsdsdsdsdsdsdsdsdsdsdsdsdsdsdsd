@@ -4,7 +4,6 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import net.minecraft.client.render.RenderTickCounter;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -50,7 +49,6 @@ public class MenuScreen extends Screen {
         super(Text.literal("Visuals"));
     }
 
-    @Override
     public boolean isPauseScreen() {
         return false;
     }
@@ -139,8 +137,7 @@ public class MenuScreen extends Screen {
     // ---------------- render ----------------
 
     @Override
-    public void render(DrawContext ctx, int mx, int my, RenderTickCounter tickCounter) {
-        float delta = tickCounter.getTickDelta(true);
+    public void render(DrawContext ctx, int mx, int my, float delta) {
         g = ctx;
         long now = System.nanoTime();
         float dt = Math.min(0.05f, (now - last) / 1_000_000_000f);
